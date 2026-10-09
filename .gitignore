@@ -1,0 +1,12 @@
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+data/backups/
+data/keypad_db.json
+data/*.tmp
+data/ota_firmware/
+.env
+.env.local

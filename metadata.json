@@ -1,0 +1,6 @@
+{
+  "name": "General Beverage Telemetry Hub",
+  "description": "Sistema di telemetria IoT multi-distributore con Moduli GB-CLOUD: gestione flotta distributori bevande (Ristosano, Big 5, Asia), taratura coclee e riconciliazione consumi merce DDT, interfaccia tastiera a membrana 14 tasti, integrazione PLC Master e database clienti.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

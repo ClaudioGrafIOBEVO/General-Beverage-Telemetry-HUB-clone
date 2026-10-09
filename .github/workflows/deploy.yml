@@ -1,0 +1,27 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            TARGET_DIR="/var/www/vending-iot"
+            if [ ! -d "$TARGET_DIR" ]; then
+              TARGET_DIR=$(find / -name "server.ts" 2>/dev/null | head -n 1 | xargs dirname)
+            fi
+            echo "Cartella progetto individuata: $TARGET_DIR"
+            cd "$TARGET_DIR"
+            chmod +x update_vps.sh update.sh 2>/dev/null || true
+            ./update_vps.sh
